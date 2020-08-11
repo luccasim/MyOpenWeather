@@ -10,10 +10,12 @@ import Foundation
 
 public final class OpenWeatherWS {
     
-    // TODO: init(key:, session:) with user api key, later...
-    public init() {}
+    public init(APIKey:String, Session:URLSession) {
+        self.key = APIKey
+        self.session = Session
+    }
     
-    public let key = "49e6a41dfca8bdde9592c1272dca877d"
-    internal let session = URLSession(configuration: .default)
+    let key : String
+    let session : URLSession
     
 }

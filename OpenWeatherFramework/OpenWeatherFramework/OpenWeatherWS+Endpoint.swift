@@ -42,10 +42,7 @@ public extension OpenWeatherWS {
             else if let data = data {
                 CallBack(.success(data))
             }
-            
-            //#osef de la reponse!
-            
+                        
         }.resume()
     }
-    
 }

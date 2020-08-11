@@ -11,12 +11,15 @@ import XCTest
 
 class OpenWeatherWSTests: XCTestCase {
     
+    let session = URLSession(configuration: .default)
+    let key     = "49e6a41dfca8bdde9592c1272dca877d"
+    
     var service : OpenWeatherWS!
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         
-        self.service = OpenWeatherWS()
+        self.service = OpenWeatherWS(APIKey: self.key, Session: self.session)
     }
 
     override func tearDownWithError() throws {
@@ -27,13 +30,6 @@ class OpenWeatherWSTests: XCTestCase {
     
     func testInit() throws {
         XCTAssert(self.service != nil)
-    }
-
-    func testKey() throws {
-        
-        try testInit()
-        
-        print("Key = \(self.service.key)")
     }
     
     func testWeatherRequest() throws {
@@ -46,8 +42,7 @@ class OpenWeatherWSTests: XCTestCase {
     }
     
     func testWeatherURLSharedSession() throws {
-        
-        let key = "49e6a41dfca8bdde9592c1272dca877d"
+    
         let city = "London"
         let url = URL(string: "https://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=\(key)")!
         
