@@ -34,7 +34,7 @@ class OpenWeatherWSTests: XCTestCase {
     
     func testWeatherRequest() throws {
         
-        let request = self.service.weatherRequest(CityName: "Paris")
+        let request = self.service.request(Endpoint: .weather(City: "Paris"))
         
         XCTAssert(request != nil)
         
@@ -77,7 +77,7 @@ class OpenWeatherWSTests: XCTestCase {
         self.service.weatherCall(CityName: "Paris") { (result) in
             
             switch result {
-            case .success(let data): reponse = String(data: data, encoding: .utf8)
+            case .success(let data): reponse = data.weathers[0].description
             default: break
             }
             

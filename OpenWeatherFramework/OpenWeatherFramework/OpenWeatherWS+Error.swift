@@ -11,7 +11,17 @@ import Foundation
 public extension OpenWeatherWS {
     
     enum APIError : Error {
-        case unallowedQueryCharacters
+        case unvalidQueryCharacter
+    }
+    
+}
+
+extension OpenWeatherWS.APIError : LocalizedError {
+    
+    public var errorDescription: String? {
+        switch self {
+        case .unvalidQueryCharacter: return "One parameter was unvalid for https:// request"
+        }
     }
     
 }

@@ -15,7 +15,53 @@ public final class OpenWeatherWS {
         self.session = Session
     }
     
-    let key : String
-    let session : URLSession
+    let key         : String
+    let session     : URLSession
+    
+    func request(Endpoint:Endpoint) -> URLRequest? {
+        
+        guard let baseURL = Endpoint.baseURL else {
+            return nil
+        }
+        
+        let query = "\(baseURL)&appid=\(self.key)"
+        
+        // Check if the query are valid.
+        guard let url = URLComponents(string: query)?.url else {
+            return nil
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = Endpoint.method
+        
+        return request
+    }
+    
+    func weatherCall(CityName name:String, CallBack: @escaping WeatherCallBack) {
+        
+        guard let request = self.request(Endpoint: .weather(City: name)) else {
+            return CallBack(.failure(APIError.unvalidQueryCharacter))
+        }
+        
+        self.session.dataTask(with: request) { (data, rep, err) in
+        
+            if let error = err {
+                CallBack(.failure(error))
+            }
+            
+            else if let data = data {
+                
+                do {
+                    
+                    let reponse = try WeatherReponse.init(fromData: data)
+                    CallBack(.success(reponse))
+                    
+                } catch let error {
+                    CallBack(.failure(error))
+                }
+            }
+                        
+        }.resume()
+    }
     
 }

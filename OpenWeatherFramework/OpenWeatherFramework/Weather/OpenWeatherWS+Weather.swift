@@ -37,6 +37,11 @@ public extension OpenWeatherWS {
         let name        : String
         let cod         : Double
         
+        init(fromData data:Data) throws {
+            let decoder = JSONDecoder()
+            self = try decoder.decode(WeatherReponse.self, from: data)
+        }
+        
         struct Coord : Codable {
             let lon : Double
             let lat : Double
@@ -51,13 +56,6 @@ public extension OpenWeatherWS {
         
         struct Main : Codable {
             
-            let temp            : Double
-            let feelsLike       : Double
-            let tempMin         : Double
-            let tempMax         : Double
-            let pressure        : Double
-            let humidity        : Double
-            
             enum CodingKeys : String, CodingKey {
                 case temp       = "temp"
                 case feelsLike  = "feels_like"
@@ -66,6 +64,13 @@ public extension OpenWeatherWS {
                 case pressure   = "pressure"
                 case humidity   = "humidity"
             }
+            
+            let temp            : Double
+            let feelsLike       : Double
+            let tempMin         : Double
+            let tempMax         : Double
+            let pressure        : Double
+            let humidity        : Double
         }
         
         struct Wind : Codable {
@@ -80,11 +85,6 @@ public extension OpenWeatherWS {
         struct Sys : Codable {
             let type, id, sunrise, sunset : Double
             let country : String
-        }
-        
-        init(fromData data:Data) throws {
-            let decoder = JSONDecoder()
-            self = try decoder.decode(WeatherReponse.self, from: data)
         }
     }
 }
