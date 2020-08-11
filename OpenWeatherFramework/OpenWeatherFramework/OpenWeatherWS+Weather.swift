@@ -12,40 +12,74 @@ public extension OpenWeatherWS {
     
     struct WeatherReponse : Codable {
         
-        let coord : Coord
+        enum CodingKeys : String, CodingKey {
+            case coord
+            case weathers           = "weather"
+            case base
+            case main
+            case visibility
+            case wind
+            case clouds, dt, sys
+            case timezone, id, name, cod
+        }
+        
+        let coord       : Coord
+        let weathers    : [Weather]
+        let base        : String
+        let main        : Main
+        let visibility  : Double
+        let wind        : Wind
+        let clouds      : Cloud
+        let dt          : Double
+        let sys         : Sys
+        let timezone    : Double
+        let id          : Double
+        let name        : String
+        let cod         : Double
         
         struct Coord : Codable {
             let lon : Double
             let lat : Double
         }
         
-        struct Weather {
-            let id              : String
+        struct Weather : Codable {
+            let id              : Double
             let main            : String
             let description     : String
             let icon            : String
         }
         
-        struct Main {
-            let temp            : String
-            let feelsLike       : String
-            let tempMin         : String
-            let tempMax         : String
-            let pressure        : String
-            let humidity        : String
+        struct Main : Codable {
+            
+            let temp            : Double
+            let feelsLike       : Double
+            let tempMin         : Double
+            let tempMax         : Double
+            let pressure        : Double
+            let humidity        : Double
+            
+            enum CodingKeys : String, CodingKey {
+                case temp       = "temp"
+                case feelsLike  = "feels_like"
+                case tempMin    = "temp_min"
+                case tempMax    = "temp_max"
+                case pressure   = "pressure"
+                case humidity   = "humidity"
+            }
         }
         
-        struct Wind {
-            let speed           : String
-            let deg             : String
+        struct Wind : Codable {
+            let speed           : Double
+            let deg             : Double
         }
         
-        struct Cloud {
-            let all             : String
+        struct Cloud : Codable {
+            let all             : Double
         }
         
-        struct Sys {
-            let type, id, country, sunrise, sunset : String
+        struct Sys : Codable {
+            let type, id, sunrise, sunset : Double
+            let country : String
         }
         
         init(fromData data:Data) throws {
