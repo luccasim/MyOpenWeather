@@ -11,6 +11,10 @@
 		84FED68F24E2C7970031B502 /* OpenWeatherFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 84FED68124E2C7970031B502 /* OpenWeatherFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		84FED69924E2CB0A0031B502 /* OpenWeatherWSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FED69824E2CB0A0031B502 /* OpenWeatherWSTests.swift */; };
 		84FED69B24E2CB1A0031B502 /* OpenWeatherWS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FED69A24E2CB1A0031B502 /* OpenWeatherWS.swift */; };
+		84FED71824E2D8020031B502 /* WeatherReponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 84FED71724E2D8020031B502 /* WeatherReponse.json */; };
+		84FED71A24E2D8490031B502 /* OpenWeatherWS+Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FED71924E2D8490031B502 /* OpenWeatherWS+Weather.swift */; };
+		84FED71C24E2D90B0031B502 /* OpenWeatherWS+Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FED71B24E2D90B0031B502 /* OpenWeatherWS+Endpoint.swift */; };
+		84FED71E24E2DB990031B502 /* OpenWeatherWS+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FED71D24E2DB990031B502 /* OpenWeatherWS+Error.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +35,10 @@
 		84FED68E24E2C7970031B502 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84FED69824E2CB0A0031B502 /* OpenWeatherWSTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenWeatherWSTests.swift; sourceTree = "<group>"; };
 		84FED69A24E2CB1A0031B502 /* OpenWeatherWS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenWeatherWS.swift; sourceTree = "<group>"; };
+		84FED71724E2D8020031B502 /* WeatherReponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = WeatherReponse.json; sourceTree = "<group>"; };
+		84FED71924E2D8490031B502 /* OpenWeatherWS+Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OpenWeatherWS+Weather.swift"; sourceTree = "<group>"; };
+		84FED71B24E2D90B0031B502 /* OpenWeatherWS+Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OpenWeatherWS+Endpoint.swift"; sourceTree = "<group>"; };
+		84FED71D24E2DB990031B502 /* OpenWeatherWS+Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OpenWeatherWS+Error.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +83,10 @@
 			children = (
 				84FED68124E2C7970031B502 /* OpenWeatherFramework.h */,
 				84FED69A24E2CB1A0031B502 /* OpenWeatherWS.swift */,
+				84FED71B24E2D90B0031B502 /* OpenWeatherWS+Endpoint.swift */,
+				84FED71D24E2DB990031B502 /* OpenWeatherWS+Error.swift */,
+				84FED71924E2D8490031B502 /* OpenWeatherWS+Weather.swift */,
+				84FED71724E2D8020031B502 /* WeatherReponse.json */,
 				84FED68224E2C7970031B502 /* Info.plist */,
 			);
 			path = OpenWeatherFramework;
@@ -182,6 +194,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84FED71824E2D8020031B502 /* WeatherReponse.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,7 +212,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84FED71C24E2D90B0031B502 /* OpenWeatherWS+Endpoint.swift in Sources */,
+				84FED71E24E2DB990031B502 /* OpenWeatherWS+Error.swift in Sources */,
 				84FED69B24E2CB1A0031B502 /* OpenWeatherWS.swift in Sources */,
+				84FED71A24E2D8490031B502 /* OpenWeatherWS+Weather.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
