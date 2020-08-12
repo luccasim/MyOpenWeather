@@ -18,7 +18,7 @@ public final class OpenWeatherWS {
     let key         : String
     let session     : URLSession
     
-    func request(Endpoint:Endpoint) -> URLRequest? {
+    public func request(Endpoint:Endpoint) -> URLRequest? {
         
         guard let baseURL = Endpoint.baseURL else {
             return nil

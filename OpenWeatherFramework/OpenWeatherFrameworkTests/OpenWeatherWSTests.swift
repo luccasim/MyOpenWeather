@@ -43,7 +43,7 @@ class OpenWeatherWSTests: XCTestCase {
     
     func testWeatherURLSharedSession() throws {
     
-        let city = "Bordeau"
+        let city = "SomewhereOnMars"
         let url = URL(string: "https://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=\(key)")!
         
         let exp = expectation(description: "Shared URLSession On Paris!")
@@ -69,16 +69,16 @@ class OpenWeatherWSTests: XCTestCase {
         print(reponse!)
     }
     
-    func testWeatherCall() throws {
+    func weatherCall(City:String) throws {
         
         let exp = expectation(description: "Call WebService")
         var reponse : String?
         
-        self.service.weatherCall(CityName: "Paris") { (result) in
+        self.service.weatherCall(CityName: City) { (result) in
             
             switch result {
             case .success(let data): reponse = data.weathers[0].description
-            default: break
+            case .failure(let error): reponse = error.localizedDescription
             }
             
             exp.fulfill()
@@ -91,5 +91,17 @@ class OpenWeatherWSTests: XCTestCase {
         XCTAssert(reponse != nil)
         
         print(reponse!)
+    }
+    
+    func testWeatherCall() throws {
+        
+        // Valid
+        try self.weatherCall(City: "Paris")
+        
+        // Unallowed query
+        try self.weatherCall(City: "Pær is")
+        
+        // Town doesn't Exist
+        try self.weatherCall(City: "SomewhereOnMars")
     }
 }
