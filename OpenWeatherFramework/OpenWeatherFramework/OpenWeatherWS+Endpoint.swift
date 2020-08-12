@@ -18,7 +18,7 @@ public extension OpenWeatherWS {
         var baseURL : String? {
             
             switch self {
-            case .weather(City: let city): return "https://api.openweathermap.org/data/2.5/weather?q=\(city)"
+            case .weather(City: let city): return "https://api.openweathermap.org/data/2.5/weather?q=\(city)&units=metric&lang=fr"
             default: return nil
             }
         }

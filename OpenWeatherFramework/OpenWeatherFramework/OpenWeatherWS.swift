@@ -37,7 +37,7 @@ public final class OpenWeatherWS {
         return request
     }
     
-    func weatherCall(CityName name:String, CallBack: @escaping WeatherCallBack) {
+    public func weatherCall(CityName name:String, CallBack: @escaping WeatherCallBack) {
         
         guard let request = self.request(Endpoint: .weather(City: name)) else {
             return CallBack(.failure(APIError.unvalidQueryCharacter))

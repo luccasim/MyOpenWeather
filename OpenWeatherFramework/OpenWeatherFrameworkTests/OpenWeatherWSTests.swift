@@ -43,7 +43,7 @@ class OpenWeatherWSTests: XCTestCase {
     
     func testWeatherURLSharedSession() throws {
     
-        let city = "London"
+        let city = "Bordeau"
         let url = URL(string: "https://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=\(key)")!
         
         let exp = expectation(description: "Shared URLSession On Paris!")
