@@ -14,7 +14,6 @@ public extension OpenWeatherWS {
         case unvalidQueryCharacter
         case serverCodError(Cod:String,Msg:String)
     }
-    
 }
 
 extension OpenWeatherWS.APIError : LocalizedError {

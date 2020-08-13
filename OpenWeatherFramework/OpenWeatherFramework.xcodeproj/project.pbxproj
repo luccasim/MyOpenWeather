@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8467644724E56DD3000A80A6 /* OneCallReponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 8467644624E56DD3000A80A6 /* OneCallReponse.json */; };
+		8467644924E574A9000A80A6 /* OpenWeatherWS+OneCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8467644824E574A9000A80A6 /* OpenWeatherWS+OneCall.swift */; };
+		8467644B24E5760C000A80A6 /* OpenWeatherWSTests+OneCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8467644A24E5760C000A80A6 /* OpenWeatherWSTests+OneCall.swift */; };
 		847920DC24E3467000FE7DB8 /* OpenWeatherWSTests+Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847920DB24E3467000FE7DB8 /* OpenWeatherWSTests+Endpoint.swift */; };
 		84FED68824E2C7970031B502 /* OpenWeatherFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FED67E24E2C7970031B502 /* OpenWeatherFramework.framework */; };
 		84FED68F24E2C7970031B502 /* OpenWeatherFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 84FED68124E2C7970031B502 /* OpenWeatherFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -30,6 +33,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8467644624E56DD3000A80A6 /* OneCallReponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = OneCallReponse.json; sourceTree = "<group>"; };
+		8467644824E574A9000A80A6 /* OpenWeatherWS+OneCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OpenWeatherWS+OneCall.swift"; sourceTree = "<group>"; };
+		8467644A24E5760C000A80A6 /* OpenWeatherWSTests+OneCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OpenWeatherWSTests+OneCall.swift"; sourceTree = "<group>"; };
 		847920DB24E3467000FE7DB8 /* OpenWeatherWSTests+Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OpenWeatherWSTests+Endpoint.swift"; sourceTree = "<group>"; };
 		84FED67E24E2C7970031B502 /* OpenWeatherFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OpenWeatherFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84FED68124E2C7970031B502 /* OpenWeatherFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenWeatherFramework.h; sourceTree = "<group>"; };
@@ -64,6 +70,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8467644524E56D1F000A80A6 /* OneCall */ = {
+			isa = PBXGroup;
+			children = (
+				8467644824E574A9000A80A6 /* OpenWeatherWS+OneCall.swift */,
+				8467644624E56DD3000A80A6 /* OneCallReponse.json */,
+			);
+			path = OneCall;
+			sourceTree = "<group>";
+		};
 		847920DA24E3456600FE7DB8 /* Weather */ = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +113,7 @@
 				84FED69A24E2CB1A0031B502 /* OpenWeatherWS.swift */,
 				84FED71B24E2D90B0031B502 /* OpenWeatherWS+Endpoint.swift */,
 				84FED71D24E2DB990031B502 /* OpenWeatherWS+Error.swift */,
+				8467644524E56D1F000A80A6 /* OneCall */,
 				847920DA24E3456600FE7DB8 /* Weather */,
 				84FED68224E2C7970031B502 /* Info.plist */,
 			);
@@ -108,8 +124,9 @@
 			isa = PBXGroup;
 			children = (
 				84FED69824E2CB0A0031B502 /* OpenWeatherWSTests.swift */,
-				84FED71F24E2EAD30031B502 /* OpenWeatherWSTests+Weather.swift */,
 				847920DB24E3467000FE7DB8 /* OpenWeatherWSTests+Endpoint.swift */,
+				84FED71F24E2EAD30031B502 /* OpenWeatherWSTests+Weather.swift */,
+				8467644A24E5760C000A80A6 /* OpenWeatherWSTests+OneCall.swift */,
 				84FED68E24E2C7970031B502 /* Info.plist */,
 			);
 			path = OpenWeatherFrameworkTests;
@@ -209,6 +226,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84FED72724E30B8C0031B502 /* WeatherReponse.json in Resources */,
+				8467644724E56DD3000A80A6 /* OneCallReponse.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,6 +248,7 @@
 				84FED71E24E2DB990031B502 /* OpenWeatherWS+Error.swift in Sources */,
 				84FED69B24E2CB1A0031B502 /* OpenWeatherWS.swift in Sources */,
 				84FED71A24E2D8490031B502 /* OpenWeatherWS+Weather.swift in Sources */,
+				8467644924E574A9000A80A6 /* OpenWeatherWS+OneCall.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,6 +258,7 @@
 			files = (
 				847920DC24E3467000FE7DB8 /* OpenWeatherWSTests+Endpoint.swift in Sources */,
 				84FED72024E2EAD30031B502 /* OpenWeatherWSTests+Weather.swift in Sources */,
+				8467644B24E5760C000A80A6 /* OpenWeatherWSTests+OneCall.swift in Sources */,
 				84FED69924E2CB0A0031B502 /* OpenWeatherWSTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

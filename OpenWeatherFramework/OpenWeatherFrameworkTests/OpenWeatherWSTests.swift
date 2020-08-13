@@ -69,6 +69,33 @@ class OpenWeatherWSTests: XCTestCase {
         print(reponse!)
     }
     
+    func testOneCallURLSharedSession() throws {
+        
+        let url = URL(string: "https://api.openweathermap.org/data/2.5/onecall?lat=48.85&lon=2.35&exclude=minutely&appid=\(key)")!
+        
+        let exp = expectation(description: "Shared URLSession On Paris!")
+        
+        var reponse : String?
+        
+        URLSession.shared.dataTask(with: url) { (data, rep, err) in
+            
+            if let data = data {
+                reponse = String(data: data, encoding: .utf8)
+            }
+            
+            exp.fulfill()
+            
+        }.resume()
+        
+        waitForExpectations(timeout: 30) { (error) in
+            XCTAssert(error == nil)
+        }
+        
+        XCTAssert(reponse != nil)
+        
+        print(reponse!)
+    }
+    
     func weatherCall(City:String) throws {
         
         let exp = expectation(description: "Call WebService")

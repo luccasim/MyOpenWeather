@@ -13,12 +13,16 @@ public extension OpenWeatherWS {
     enum Endpoint {
         
         case weather(City:String)
+        case oneCall(Lat:String, Long:String)
         case none
         
         var baseURL : String? {
             
             switch self {
-            case .weather(City: let city): return "https://api.openweathermap.org/data/2.5/weather?q=\(city)&units=metric&lang=fr"
+            case .weather(City: let city):
+                return "https://api.openweathermap.org/data/2.5/weather?q=\(city)&units=metric&lang=fr"
+            case .oneCall(Lat: let lat, Long: let long):
+                return "https://api.openweathermap.org/data/2.5/onecall?lat=\(lat)&lon=\(long)&exclude=minutely"
             default: return nil
             }
         }
@@ -26,12 +30,13 @@ public extension OpenWeatherWS {
         var method : String? {
             
             switch self {
-            case .weather(City: _): return "GET"
+            case .weather(City: _), .oneCall(Lat: _, Long: _): return "GET"
             default: return nil
             }
         }
     }
     
-    typealias WeatherCallBack = ((Result<WeatherReponse,Error>) -> Void)
+    typealias WeatherCallBack = ((Result<WeatherReponse, Error>) -> Void)
+    typealias OneCallCallBack = ((Result<OneCallReponse, Error>) -> Void)
     
 }
