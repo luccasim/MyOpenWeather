@@ -19,7 +19,7 @@ class OpenWeatherWSTests_OneCall: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
-    func testWeatherReponse() throws {
+    func testOneCallParsing() throws {
         
         let bundle = Bundle(identifier: "fr.casimir.OpenWeatherFramework")!
         let path = bundle.path(forResource: "OneCallReponse", ofType: ".json")!
