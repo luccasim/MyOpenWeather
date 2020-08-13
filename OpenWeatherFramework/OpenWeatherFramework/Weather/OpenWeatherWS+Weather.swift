@@ -12,18 +12,6 @@ public extension OpenWeatherWS {
     
     struct WeatherReponse : Codable {
         
-        enum CodingKeys : String, CodingKey {
-            case coord
-            case weathers           = "weather"
-            case base
-            case main
-            case visibility
-            case wind
-            case clouds, dt, sys
-            case timezone, id, name, cod
-            case message
-        }
-        
         let coord       : Coord
         let weathers    : [Weather]
         let base        : String
@@ -39,6 +27,11 @@ public extension OpenWeatherWS {
         let cod         : Int
         
         private var message : String?
+        
+        enum CodingKeys : String, CodingKey {
+            case base, main, visibility, wind, clouds, dt, sys, timezone, id, name, cod, message, coord
+            case weathers           = "weather"
+        }
                 
         public init(from decoder:Decoder) throws {
             
@@ -73,7 +66,6 @@ public extension OpenWeatherWS {
             let decoder = JSONDecoder()
             self = try decoder.decode(WeatherReponse.self, from: data)
         }
-        
     }
 }
 

@@ -36,7 +36,6 @@ public extension OpenWeatherWS {
             self.current        = try container.decode(Current.self, forKey: .current)
             self.hourly         = try container.decode([Hourly].self, forKey: .hourly)
             self.daily          = try container.decode([Daily].self, forKey: .daily)
-            
         }
         
         init(fromJSONData data:Data) throws {

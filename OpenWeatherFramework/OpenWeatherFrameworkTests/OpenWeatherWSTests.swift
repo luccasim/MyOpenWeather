@@ -41,67 +41,48 @@ class OpenWeatherWSTests: XCTestCase {
         print(request!.url!.absoluteString)
     }
     
-    func testWeatherURLSharedSession() throws {
+    func sharedSessionTask(url:URL) throws {
     
+        let exp = expectation(description: "Shared URLSession On Paris!")
+        var reponse : String?
+        
+        URLSession.shared.dataTask(with: url) { (data, rep, err) in
+            
+            if let data = data {
+                reponse = String(data: data, encoding: .utf8)
+            }
+            
+            exp.fulfill()
+            
+        }.resume()
+        
+        waitForExpectations(timeout: 30) { (error) in
+            XCTAssert(error == nil)
+        }
+        
+        XCTAssert(reponse != nil)
+        
+        print(reponse!)
+    }
+    
+    func testsAPITask() throws {
+        
         let city = "SomewhereOnMars"
-        let url = URL(string: "https://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=\(key)")!
+        let weather = URL(string: "https://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=\(key)")!
         
-        let exp = expectation(description: "Shared URLSession On Paris!")
+        try self.sharedSessionTask(url: weather)
         
-        var reponse : String?
+        let oneCall = URL(string: "https://api.openweathermap.org/data/2.5/onecall?lat=48.85&lon=2.35&exclude=minutely&appid=\(key)")!
         
-        URLSession.shared.dataTask(with: url) { (data, rep, err) in
-            
-            if let data = data {
-                reponse = String(data: data, encoding: .utf8)
-            }
-            
-            exp.fulfill()
-            
-        }.resume()
-        
-        waitForExpectations(timeout: 30) { (error) in
-            XCTAssert(error == nil)
-        }
-        
-        XCTAssert(reponse != nil)
-        
-        print(reponse!)
+        try self.sharedSessionTask(url: oneCall)
     }
     
-    func testOneCallURLSharedSession() throws {
-        
-        let url = URL(string: "https://api.openweathermap.org/data/2.5/onecall?lat=48.85&lon=2.35&exclude=minutely&appid=\(key)")!
-        
-        let exp = expectation(description: "Shared URLSession On Paris!")
-        
-        var reponse : String?
-        
-        URLSession.shared.dataTask(with: url) { (data, rep, err) in
-            
-            if let data = data {
-                reponse = String(data: data, encoding: .utf8)
-            }
-            
-            exp.fulfill()
-            
-        }.resume()
-        
-        waitForExpectations(timeout: 30) { (error) in
-            XCTAssert(error == nil)
-        }
-        
-        XCTAssert(reponse != nil)
-        
-        print(reponse!)
-    }
-    
-    func weatherCall(City:String) throws {
+    func weatherTask(City:String) throws {
         
         let exp = expectation(description: "Call WebService")
         var reponse : String?
         
-        self.service.weatherCall(CityName: City) { (result) in
+        self.service.weatherTask(CityName: City) { (result) in
             
             switch result {
             case .success(let data): reponse = data.weathers[0].description
@@ -120,15 +101,60 @@ class OpenWeatherWSTests: XCTestCase {
         print(reponse!)
     }
     
-    func testWeatherCall() throws {
+    func testsWeatherTask() throws {
         
         // Valid
-        try self.weatherCall(City: "Paris")
+        try self.weatherTask(City: "Paris")
         
         // Unallowed query
-        try self.weatherCall(City: "Pær is")
+        try self.weatherTask(City: "Pær is")
         
         // Town doesn't Exist
-        try self.weatherCall(City: "SomewhereOnMars")
+        try self.weatherTask(City: "SomewhereOnMars")
+    }
+    
+    func onCallTask(Coordinates:(Lon:Double,Lat:Double)) throws {
+        
+        let exp = expectation(description: "onCall Task")
+        var reponse : String?
+        
+        self.service.oneCallTask(Coordinates: Coordinates) { (result) in
+            
+            switch result {
+            case .success(let data): reponse = data.timezone
+            case .failure(let error): reponse = error.localizedDescription
+            }
+            
+            exp.fulfill()
+        }
+        
+        waitForExpectations(timeout: 30) { (error) in
+            XCTAssert(error == nil)
+        }
+        
+        XCTAssert(reponse != nil)
+        
+        print(reponse!)
+    }
+    
+    func testsOnCallTask() throws {
+        
+        // Paris
+        try self.onCallTask(Coordinates: (Lon: 2.35, Lat: 48.85))
+        
+        // Madrid
+        try self.onCallTask(Coordinates: (Lon: -3.703790, Lat: 40.416775))
+
+        // Berlin
+        try self.onCallTask(Coordinates: (Lon: 13.404954, Lat: 52.520008))
+        
+        // Tokyo
+        try self.onCallTask(Coordinates: (Lon: 139.731992, Lat: 35.709026))
+        
+        // Rio
+        try self.onCallTask(Coordinates: (Lon: -43.3307, Lat: -22.9201))
+        
+        // Error
+        try self.onCallTask(Coordinates: (Lon: -475495, Lat: 2347984234))
     }
 }

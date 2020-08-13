@@ -13,7 +13,7 @@ public extension OpenWeatherWS {
     enum Endpoint {
         
         case weather(City:String)
-        case oneCall(Lat:String, Long:String)
+        case oneCall(Lat:Double, Long:Double)
         case none
         
         var baseURL : String? {

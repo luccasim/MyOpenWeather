@@ -37,7 +37,7 @@ public final class OpenWeatherWS {
         return request
     }
     
-    public func weatherCall(CityName name:String, CallBack: @escaping WeatherCallBack) {
+    public func weatherTask(CityName name:String, CallBack: @escaping WeatherCallBack) {
         
         guard let request = self.request(Endpoint: .weather(City: name)) else {
             return CallBack(.failure(APIError.unvalidQueryCharacter))
@@ -64,4 +64,30 @@ public final class OpenWeatherWS {
         }.resume()
     }
     
+    public func oneCallTask(Coordinates:(Lon:Double,Lat:Double), CallBack: @escaping OneCallCallBack) {
+        
+        guard let request = self.request(Endpoint: .oneCall(Lat: Coordinates.Lat, Long: Coordinates.Lon)) else {
+            return CallBack(.failure(APIError.unvalidQueryCharacter))
+        }
+        
+        self.session.dataTask(with: request) { (data, rep, err) in
+        
+            if let error = err {
+                CallBack(.failure(error))
+            }
+            
+            else if let data = data {
+                
+                do {
+                    
+                    let reponse = try OneCallReponse.init(fromJSONData: data)
+                    CallBack(.success(reponse))
+                    
+                } catch let error {
+                    CallBack(.failure(error))
+                }
+            }
+                        
+        }.resume()
+    }
 }
