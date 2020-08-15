@@ -12,13 +12,13 @@ public extension OpenWeatherWS {
     
     struct OneCallReponse : Codable {
         
-        let lon             : Double
-        let lat             : Double
-        let timezone        : String
-        let timezoneOffset  : Int
-        let current         : Current
-        let hourly          : [Hourly]
-        let daily           : [Daily]
+        public let lon             : Double
+        public let lat             : Double
+        public let timezone        : String
+        public let timezoneOffset  : Int
+        public let current         : Current
+        public let hourly          : [Hourly]
+        public let daily           : [Daily]
         
         enum Keys : String, CodingKey {
             case lon, lat, timezone, current, hourly, daily
@@ -47,28 +47,28 @@ public extension OpenWeatherWS {
 public extension OpenWeatherWS.OneCallReponse {
     
     struct Weather : Codable {
-        let id          : Int
-        let main        : String
-        let description : String
-        let icon        : String
+        public let id          : Int
+        public let main        : String
+        public let description : String
+        public let icon        : String
     }
     
     struct Current : Codable {
         
-        let dt          : Int
-        let sunrise     : Int
-        let sunset      : Int
-        let temp        : Double
-        let feelsLike   : Double
-        let pressure    : Int
-        let humidity    : Int
-        let dewPoint    : Double
-        let uvi         : Double
-        let clouds      : Int
-        let visibility  : Int
-        let windSpeed   : Double
-        let windDeg     : Int
-        let weather     : [Weather]
+        public let dt          : Int
+        public let sunrise     : Int
+        public let sunset      : Int
+        public let temp        : Double
+        public let feelsLike   : Double
+        public let pressure    : Int
+        public let humidity    : Int
+        public let dewPoint    : Double
+        public let uvi         : Double
+        public let clouds      : Int
+        public let visibility  : Int
+        public let windSpeed   : Double
+        public let windDeg     : Int
+        public let weather     : [Weather]
         
         enum CodingKeys : String, CodingKey {
             case dt, sunrise, sunset, temp, pressure, humidity, uvi, clouds, visibility, weather
@@ -81,18 +81,18 @@ public extension OpenWeatherWS.OneCallReponse {
     
     struct Hourly : Codable {
         
-        let dt          : Int
-        let temp        : Double
-        let feelsLike   : Double
-        let pressure    : Int
-        let humidity    : Int
-        let dewPoint    : Double
-        let clouds      : Int
-        let visibility  : Int
-        let windSpeed   : Double
-        let windDeg     : Int
-        let weather     : [Weather]
-        let pop         : Double
+        public let dt          : Int
+        public let temp        : Double
+        public let feelsLike   : Double
+        public let pressure    : Int
+        public let humidity    : Int
+        public let dewPoint    : Double
+        public let clouds      : Int
+        public let visibility  : Int
+        public let windSpeed   : Double
+        public let windDeg     : Int
+        public let weather     : [Weather]
+        public let pop         : Double
         
         enum CodingKeys : String, CodingKey {
             case dt, temp, pressure, humidity, clouds, visibility, weather, pop
@@ -105,21 +105,21 @@ public extension OpenWeatherWS.OneCallReponse {
     
     struct Daily : Codable {
         
-        let dt          : Int
-        let sunrise     : Int
-        let sunset      : Int
-        let temp        : Temp
-        let feelsLike   : FeelsLike
-        let pressure    : Int
-        let humidity    : Int
-        let dewPoint    : Double
-        let windSpeed   : Double
-        let windDeg     : Int
-        let weather     : [Weather]
-        let clouds      : Int
-        let pop         : Double
-        let rain        : Double?
-        let uvi         : Double
+        public let dt          : Int
+        public let sunrise     : Int
+        public let sunset      : Int
+        public let temp        : Temp
+        public let feelsLike   : FeelsLike
+        public let pressure    : Int
+        public let humidity    : Int
+        public let dewPoint    : Double
+        public let windSpeed   : Double
+        public let windDeg     : Int
+        public let weather     : [Weather]
+        public let clouds      : Int
+        public let pop         : Double
+        public let rain        : Double?
+        public let uvi         : Double
         
         enum CodingKeys : String, CodingKey {
             case dt, sunrise, sunset, temp, pressure, humidity, weather, clouds, pop, rain, uvi
@@ -133,10 +133,10 @@ public extension OpenWeatherWS.OneCallReponse {
     }
     
     struct Temp : Codable {
-        let day, min, max, night, eve, morn : Double
+        public let day, min, max, night, eve, morn : Double
     }
     
     struct FeelsLike : Codable {
-        let day, night, eve, morn : Double
+        public let day, night, eve, morn : Double
     }
 }
