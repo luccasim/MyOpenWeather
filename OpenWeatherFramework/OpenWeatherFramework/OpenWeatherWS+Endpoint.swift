@@ -20,9 +20,9 @@ public extension OpenWeatherWS {
             
             switch self {
             case .weather(City: let city):
-                return "https://api.openweathermap.org/data/2.5/weather?q=\(city)&units=metric&lang=fr"
+                return "https://api.openweathermap.org/data/2.5/weather?q=\(city)&units=metric"
             case .oneCall(Lat: let lat, Long: let long):
-                return "https://api.openweathermap.org/data/2.5/onecall?lat=\(lat)&lon=\(long)&exclude=minutely"
+                return "https://api.openweathermap.org/data/2.5/onecall?lat=\(lat)&lon=\(long)&exclude=minutely&units=metric"
             default: return nil
             }
         }
