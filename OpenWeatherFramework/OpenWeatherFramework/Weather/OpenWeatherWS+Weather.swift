@@ -92,6 +92,7 @@ public extension OpenWeatherWS {
             Model.name = self.name
             Model.sysSunrise = self.sys.sunrise
             Model.sysSunset = self.sys.sunset
+            Model.sysCountry = self.sys.country
             
             return true
         }

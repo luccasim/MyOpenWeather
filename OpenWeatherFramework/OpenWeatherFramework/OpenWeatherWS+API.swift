@@ -65,7 +65,7 @@ public protocol OWAPIWeather : class {
     var dt          : Int {get set}
     
     /// Country code (GB, JP etc.)
-    var sysCountry  : Int {get set}
+    var sysCountry  : String {get set}
     
     /// Sunrise time, unix, UTC
     var sysSunrise  : Int {get set}
