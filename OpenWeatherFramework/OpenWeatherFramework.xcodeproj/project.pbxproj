@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8442BEA524E78034005BB858 /* OpenWeatherWS+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8442BEA424E78034005BB858 /* OpenWeatherWS+API.swift */; };
 		8467644724E56DD3000A80A6 /* OneCallReponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 8467644624E56DD3000A80A6 /* OneCallReponse.json */; };
 		8467644924E574A9000A80A6 /* OpenWeatherWS+OneCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8467644824E574A9000A80A6 /* OpenWeatherWS+OneCall.swift */; };
 		8467644B24E5760C000A80A6 /* OpenWeatherWSTests+OneCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8467644A24E5760C000A80A6 /* OpenWeatherWSTests+OneCall.swift */; };
@@ -33,6 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8442BEA424E78034005BB858 /* OpenWeatherWS+API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OpenWeatherWS+API.swift"; sourceTree = "<group>"; };
 		8467644624E56DD3000A80A6 /* OneCallReponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = OneCallReponse.json; sourceTree = "<group>"; };
 		8467644824E574A9000A80A6 /* OpenWeatherWS+OneCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OpenWeatherWS+OneCall.swift"; sourceTree = "<group>"; };
 		8467644A24E5760C000A80A6 /* OpenWeatherWSTests+OneCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OpenWeatherWSTests+OneCall.swift"; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				84FED68124E2C7970031B502 /* OpenWeatherFramework.h */,
 				84FED69A24E2CB1A0031B502 /* OpenWeatherWS.swift */,
 				84FED71B24E2D90B0031B502 /* OpenWeatherWS+Endpoint.swift */,
+				8442BEA424E78034005BB858 /* OpenWeatherWS+API.swift */,
 				84FED71D24E2DB990031B502 /* OpenWeatherWS+Error.swift */,
 				8467644524E56D1F000A80A6 /* OneCall */,
 				847920DA24E3456600FE7DB8 /* Weather */,
@@ -244,6 +247,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8442BEA524E78034005BB858 /* OpenWeatherWS+API.swift in Sources */,
 				84FED71C24E2D90B0031B502 /* OpenWeatherWS+Endpoint.swift in Sources */,
 				84FED71E24E2DB990031B502 /* OpenWeatherWS+Error.swift in Sources */,
 				84FED69B24E2CB1A0031B502 /* OpenWeatherWS.swift in Sources */,

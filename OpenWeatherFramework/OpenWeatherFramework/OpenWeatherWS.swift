@@ -90,4 +90,34 @@ public final class OpenWeatherWS {
                         
         }.resume()
     }
+    
+    public func weatherUpdate(Model:OWAPIWeather, Result: @escaping (Result<Bool,Error>)->()) {
+        
+        guard let request = self.request(Endpoint: .weather(City: Model.cityName)) else {
+            return Result(.failure(APIError.unvalidQueryCharacter))
+        }
+        
+        self.session.dataTask(with: request) { (data, rep, err) in
+        
+            if let error = err {
+                Result(.failure(error))
+            }
+            
+            else if let data = data {
+                
+                do {
+                    
+                    let reponse = try WeatherReponse.init(fromData: data)
+                    DispatchQueue.main.async {
+                        reponse.set(Model: Model)
+                        Result(.success(true))
+                    }
+
+                } catch let error {
+                    Result(.failure(error))
+                }
+            }
+                        
+        }.resume()
+    }
 }

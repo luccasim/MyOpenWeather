@@ -157,4 +157,55 @@ class OpenWeatherWSTests: XCTestCase {
         // Error
         try self.onCallTask(Coordinates: (Lon: -475495, Lat: 2347984234))
     }
+    
+    class Model : OWAPIWeather {
+    
+        var cityName: String = "Lyon"
+        var lon: Double = 0
+        var lat: Double = 0
+        var base: String = ""
+        var main: String = ""
+        var desc: String = ""
+        var icon: String = ""
+        var temp: Double = 0
+        var feelsLike: Double = 0
+        var tempMin: Double = 0
+        var tempMax: Double = 0
+        var pressure: Int = 0
+        var humidity: Int = 0
+        var visibility: Int = 0
+        var clouds: Int = 0
+        var timezone: Int = 0
+        var id: Int = 0
+        var sunrise: Int = 0
+        var sunset: Int = 0
+        
+        init() {}
+    }
+    
+    func testUpdate() throws {
+        
+        let exp = expectation(description: "weather update")
+        let model = Model()
+        var reponse : String?
+        
+        self.service.weatherUpdate(Model: model) { (result) in
+            
+            switch result {
+            case .success(let data): reponse = data.description
+            case .failure(let error): reponse = error.localizedDescription
+            }
+            
+            exp.fulfill()
+        }
+        
+        waitForExpectations(timeout: 30) { (error) in
+            XCTAssert(error == nil)
+        }
+        
+        XCTAssert(reponse != nil)
+        
+        print(model.tempMax)
+
+    }
 }

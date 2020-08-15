@@ -12,19 +12,19 @@ public extension OpenWeatherWS {
     
     struct WeatherReponse : Codable {
         
-        let coord       : Coord
-        let weathers    : [Weather]
-        let base        : String
-        let main        : Main
-        let visibility  : Double
-        let wind        : Wind
-        let clouds      : Cloud
-        let dt          : Double
-        let sys         : Sys
-        let timezone    : Double
-        let id          : Double
-        let name        : String
-        let cod         : Int
+        public let coord       : Coord
+        public let weathers    : [Weather]
+        public let base        : String
+        public let main        : Main
+        public let visibility  : Int
+        public let wind        : Wind
+        public let clouds      : Cloud
+        public let dt          : Int
+        public let sys         : Sys
+        public let timezone    : Int
+        public let id          : Int
+        public let name        : String
+        public let cod         : Int
         
         private var message : String?
         
@@ -51,13 +51,13 @@ public extension OpenWeatherWS {
             self.weathers   = try container.decode([Weather].self, forKey: .weathers)
             self.base       = try container.decode(String.self, forKey: .base)
             self.main       = try container.decode(Main.self, forKey: .main)
-            self.visibility = try container.decode(Double.self, forKey: .visibility)
+            self.visibility = try container.decode(Int.self, forKey: .visibility)
             self.wind       = try container.decode(Wind.self, forKey: .wind)
             self.clouds     = try container.decode(Cloud.self, forKey: .clouds)
-            self.dt         = try container.decode(Double.self, forKey: .dt)
+            self.dt         = try container.decode(Int.self, forKey: .dt)
             self.sys        = try container.decode(Sys.self, forKey: .sys)
-            self.timezone   = try container.decode(Double.self, forKey: .timezone)
-            self.id         = try container.decode(Double.self, forKey: .id)
+            self.timezone   = try container.decode(Int.self, forKey: .timezone)
+            self.id         = try container.decode(Int.self, forKey: .id)
             self.name       = try container.decode(String.self, forKey: .name)
 
         }
@@ -66,21 +66,45 @@ public extension OpenWeatherWS {
             let decoder = JSONDecoder()
             self = try decoder.decode(WeatherReponse.self, from: data)
         }
+        
+        func set(Model:OWAPIWeather) {
+            
+            Model.cityName = self.name
+            Model.lon = self.coord.lon
+            Model.lat = self.coord.lat
+            Model.base = self.base
+            Model.main = self.weathers[0].main
+            Model.desc = self.weathers[0].description
+            Model.icon = self.weathers[0].icon
+            Model.temp = self.main.temp
+            Model.feelsLike = self.main.feelsLike
+            Model.tempMin = self.main.tempMin
+            Model.tempMax = self.main.tempMax
+            Model.pressure = self.main.pressure
+            Model.humidity = self.main.humidity
+            Model.visibility = self.visibility
+            Model.clouds = self.clouds.all
+            Model.timezone = self.timezone
+            Model.id = self.id
+            Model.sunrise = self.sys.sunrise
+            Model.sunset = self.sys.sunset
+            
+        }
     }
 }
 
 public extension OpenWeatherFramework.OpenWeatherWS.WeatherReponse {
     
     struct Coord : Codable {
-        let lon : Double
-        let lat : Double
+        public let lon : Double
+        public let lat : Double
     }
     
     struct Weather : Codable {
-        let id              : Double
-        let main            : String
-        let description     : String
-        let icon            : String
+        public let id              : Int
+        public let main            : String
+        public let description     : String
+        public let icon            : String
     }
     
     struct Main : Codable {
@@ -94,26 +118,26 @@ public extension OpenWeatherFramework.OpenWeatherWS.WeatherReponse {
             case humidity   = "humidity"
         }
         
-        let temp            : Double
-        let feelsLike       : Double
-        let tempMin         : Double
-        let tempMax         : Double
-        let pressure        : Double
-        let humidity        : Double
+        public let temp            : Double
+        public let feelsLike       : Double
+        public let tempMin         : Double
+        public let tempMax         : Double
+        public let pressure        : Int
+        public let humidity        : Int
     }
     
     struct Wind : Codable {
-        let speed           : Double
-        let deg             : Double
+        public let speed           : Double
+        public let deg             : Int
     }
     
     struct Cloud : Codable {
-        let all             : Double
+        public let all             : Int
     }
     
     struct Sys : Codable {
-        let type, id, sunrise, sunset : Double
-        let country : String
+        public let type, id, sunrise, sunset : Int
+        public let country : String
     }
     
 }
