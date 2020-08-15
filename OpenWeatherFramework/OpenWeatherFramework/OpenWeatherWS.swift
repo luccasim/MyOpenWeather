@@ -18,6 +18,9 @@ public final class OpenWeatherWS {
     let key         : String
     let session     : URLSession
     
+    /// Create a Valid request with the associate endpoint
+    /// - Parameter Endpoint: The desired endpoint . Show OpenWeatherWS.Endpoint
+    /// - Returns: The request if the query is valid
     public func request(Endpoint:Endpoint) -> URLRequest? {
         
         guard let baseURL = Endpoint.baseURL else {
@@ -26,7 +29,7 @@ public final class OpenWeatherWS {
         
         let query = "\(baseURL)&appid=\(self.key)"
         
-        // Check if the query are valid.
+        // Check if the query is valid.
         guard let url = URLComponents(string: query)?.url else {
             return nil
         }
@@ -37,6 +40,11 @@ public final class OpenWeatherWS {
         return request
     }
     
+    /// Call Current weather data for one location
+    /// - Parameters:
+    ///   - name: The location name
+    ///   - CallBack: The results of the request. On success return a complet struct.
+    /// - SeeAlso : OpenWeatherWS.WeatherReponse
     public func weatherTask(CityName name:String, CallBack: @escaping WeatherCallBack) {
         
         guard let request = self.request(Endpoint: .weather(City: name)) else {
@@ -64,6 +72,12 @@ public final class OpenWeatherWS {
         }.resume()
     }
     
+    
+    /// Call Current and forecast weather data
+    /// You should have longitude and latitude
+    /// - Parameters:
+    ///   - Coordinates: Geographical coordinates of the location
+    ///   - CallBack: The results of the request. On success return a complet struct (See OpenWeatherWS.WeatherReponse).
     public func oneCallTask(Coordinates:(Lon:Double,Lat:Double), CallBack: @escaping OneCallCallBack) {
         
         guard let request = self.request(Endpoint: .oneCall(Lat: Coordinates.Lat, Long: Coordinates.Lon)) else {
@@ -91,9 +105,14 @@ public final class OpenWeatherWS {
         }.resume()
     }
     
+    /// Call Current weather data for one location
+    /// Use this method if you desire update your model. Update trigger if your dt model are different.
+    /// - Parameters:
+    ///   - Model: Model with OWAPI protocol
+    ///   - Result: Async Result, true after updating.
     public func weatherUpdate(Model:OWAPIWeather, Result: @escaping (Result<Bool,Error>)->()) {
         
-        guard let request = self.request(Endpoint: .weather(City: Model.cityName)) else {
+        guard let request = self.request(Endpoint: .weather(City: Model.cityNameRequest)) else {
             return Result(.failure(APIError.unvalidQueryCharacter))
         }
         
@@ -109,8 +128,7 @@ public final class OpenWeatherWS {
                     
                     let reponse = try WeatherReponse.init(fromData: data)
                     DispatchQueue.main.async {
-                        reponse.set(Model: Model)
-                        Result(.success(true))
+                        Result(.success(reponse.upDate(Model: Model)))
                     }
 
                 } catch let error {

@@ -67,28 +67,33 @@ public extension OpenWeatherWS {
             self = try decoder.decode(WeatherReponse.self, from: data)
         }
         
-        func set(Model:OWAPIWeather) {
+        func upDate(Model:OWAPIWeather) -> Bool {
             
-            Model.cityName = self.name
-            Model.lon = self.coord.lon
-            Model.lat = self.coord.lat
-            Model.base = self.base
-            Model.main = self.weathers[0].main
-            Model.desc = self.weathers[0].description
-            Model.icon = self.weathers[0].icon
-            Model.temp = self.main.temp
-            Model.feelsLike = self.main.feelsLike
-            Model.tempMin = self.main.tempMin
-            Model.tempMax = self.main.tempMax
-            Model.pressure = self.main.pressure
-            Model.humidity = self.main.humidity
+            guard Model.dt != self.dt else {return false}
+            
+            Model.coordLon = self.coord.lon
+            Model.coorLat = self.coord.lat
+            Model.weatherId = self.weathers[0].id
+            Model.weatherMain = self.weathers[0].main
+            Model.weatherDesc = self.weathers[0].description
+            Model.weatherIcon = self.weathers[0].icon
+            Model.mainTemp = self.main.temp
+            Model.mainFeelslike = self.main.feelsLike
+            Model.mainTempMin = self.main.tempMin
+            Model.mainTempMax = self.main.tempMax
+            Model.mainPressure = self.main.pressure
+            Model.mainHumidity = self.main.humidity
             Model.visibility = self.visibility
-            Model.clouds = self.clouds.all
+            Model.cloudsAll = self.clouds.all
+            Model.windSpeed = self.wind.speed
+            Model.windDeg = self.wind.deg
             Model.timezone = self.timezone
             Model.id = self.id
-            Model.sunrise = self.sys.sunrise
-            Model.sunset = self.sys.sunset
+            Model.name = self.name
+            Model.sysSunrise = self.sys.sunrise
+            Model.sysSunset = self.sys.sunset
             
+            return true
         }
     }
 }

@@ -159,26 +159,33 @@ class OpenWeatherWSTests: XCTestCase {
     }
     
     class Model : OWAPIWeather {
-    
-        var cityName: String = "Lyon"
-        var lon: Double = 0
-        var lat: Double = 0
-        var base: String = ""
-        var main: String = ""
-        var desc: String = ""
-        var icon: String = ""
-        var temp: Double = 0
-        var feelsLike: Double = 0
-        var tempMin: Double = 0
-        var tempMax: Double = 0
-        var pressure: Int = 0
-        var humidity: Int = 0
+        
         var visibility: Int = 0
-        var clouds: Int = 0
         var timezone: Int = 0
         var id: Int = 0
-        var sunrise: Int = 0
-        var sunset: Int = 0
+        
+        var cityNameRequest: String = "Tours"
+        
+        var coordLon: Double = 0
+        var coorLat: Double = 0
+        var weatherId: Int = 0
+        var weatherMain: String = ""
+        var weatherDesc: String = ""
+        var weatherIcon: String = ""
+        var mainTemp: Double = 0
+        var mainFeelslike: Double = 0
+        var mainPressure: Int = 0
+        var mainHumidity: Int = 0
+        var mainTempMin: Double = 0
+        var mainTempMax: Double = 0
+        var windSpeed: Double = 0
+        var windDeg: Int = 0
+        var cloudsAll: Int = 0
+        var dt: Int = 0
+        var sysCountry: Int = 0
+        var sysSunrise: Int = 0
+        var sysSunset: Int = 0
+        var name: String = ""
         
         init() {}
     }
@@ -205,7 +212,7 @@ class OpenWeatherWSTests: XCTestCase {
         
         XCTAssert(reponse != nil)
         
-        print(model.tempMax)
+        print(model.name)
 
     }
 }
