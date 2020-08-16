@@ -160,6 +160,8 @@ class OpenWeatherWSTests: XCTestCase {
     
     class Model : OWAPIWeather {
         
+        var sysCountry: String = ""
+        
         var visibility: Int = 0
         var timezone: Int = 0
         var id: Int = 0
@@ -182,7 +184,6 @@ class OpenWeatherWSTests: XCTestCase {
         var windDeg: Int = 0
         var cloudsAll: Int = 0
         var dt: Int = 0
-        var sysCountry: Int = 0
         var sysSunrise: Int = 0
         var sysSunset: Int = 0
         var name: String = ""

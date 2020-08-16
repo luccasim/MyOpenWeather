@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8442BEA524E78034005BB858 /* OpenWeatherWS+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8442BEA424E78034005BB858 /* OpenWeatherWS+API.swift */; };
+		8442BECF24E9CB80005BB858 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 8442BECE24E9CB80005BB858 /* README.md */; };
 		8467644724E56DD3000A80A6 /* OneCallReponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 8467644624E56DD3000A80A6 /* OneCallReponse.json */; };
 		8467644924E574A9000A80A6 /* OpenWeatherWS+OneCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8467644824E574A9000A80A6 /* OpenWeatherWS+OneCall.swift */; };
 		8467644B24E5760C000A80A6 /* OpenWeatherWSTests+OneCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8467644A24E5760C000A80A6 /* OpenWeatherWSTests+OneCall.swift */; };
@@ -35,6 +36,7 @@
 
 /* Begin PBXFileReference section */
 		8442BEA424E78034005BB858 /* OpenWeatherWS+API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OpenWeatherWS+API.swift"; sourceTree = "<group>"; };
+		8442BECE24E9CB80005BB858 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		8467644624E56DD3000A80A6 /* OneCallReponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = OneCallReponse.json; sourceTree = "<group>"; };
 		8467644824E574A9000A80A6 /* OpenWeatherWS+OneCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OpenWeatherWS+OneCall.swift"; sourceTree = "<group>"; };
 		8467644A24E5760C000A80A6 /* OpenWeatherWSTests+OneCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OpenWeatherWSTests+OneCall.swift"; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 		84FED67424E2C7970031B502 = {
 			isa = PBXGroup;
 			children = (
+				8442BECE24E9CB80005BB858 /* README.md */,
 				84FED68024E2C7970031B502 /* OpenWeatherFramework */,
 				84FED68B24E2C7970031B502 /* OpenWeatherFrameworkTests */,
 				84FED67F24E2C7970031B502 /* Products */,
@@ -228,6 +231,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8442BECF24E9CB80005BB858 /* README.md in Resources */,
 				84FED72724E30B8C0031B502 /* WeatherReponse.json in Resources */,
 				8467644724E56DD3000A80A6 /* OneCallReponse.json in Resources */,
 			);
