@@ -2,14 +2,14 @@
 
 ## Introduction
 
-This framework allows a connection with [API OpenWeather]:(https://openweathermap.org/api). Only 2 services has been implemented.
+This framework allows a connection with [API OpenWeather](https://openweathermap.org/api). Only 2 services has been implemented.
 
 This Framework use:
 
 - an Enum Endpoint to identify a service.
 - a Protocol OWAPI for update your Model.
-- a Struct Reponse (with Codable) for get values.
-- an Enum Error with a errorDescription.
+- a Struct Reponse (Codable with JSONDecoder) to collect service reponse .
+- an Enum APIError with a errorDescription.
 
 Every public methods has a unit Test.
 
@@ -23,13 +23,11 @@ The class OpenWeatherWS() should work with your API_KEY and a URLSession.
 
     import OpenWeatherFramework
     
-    var ws = OpenWeatherWS(APIKey: "{YOUR_API_KEY}", Session: URLSession.shared)
+    let ws = OpenWeatherWS(APIKey: "{YOUR_API_KEY}", Session: URLSession.shared)
 
 ```
 
-## Services
-
-### Weather, OneCall
+### Services
 
 The Endpoint .weather(City:) allows you to create a request:
 
